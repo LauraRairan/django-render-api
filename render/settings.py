@@ -134,19 +134,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ##NUEVAAAS COSAS
 # Build paths inside the project
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Security settings
 SECRET_KEY = os.environ.get('SECRET_KEY', 'your-default-secret-key')  # Set in Render later
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ") if not DEBUG else []
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true" or os.environ.get("DEBUG", "False").lower() == "True"
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
+#ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ") if not DEBUG else []
 
 
 # Database configuration
+#DATABASES = {
+#    'default': dj_database_url.parse(os.environ.get('DATABASE_URL', 'sqlite:///db.sqlite3'))
+#}
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL', 'sqlite:///db.sqlite3'))
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
-
 # Static files configuration
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
