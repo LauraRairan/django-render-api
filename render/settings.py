@@ -140,12 +140,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security settings
 SECRET_KEY = os.environ.get('SECRET_KEY', 'your-default-secret-key')  # Set in Render later
-DEBUG = os.environ.get("DEBUG", "False").lower() in ("true", "1")
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')#ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ") if not DEBUG else []
+#DEBUG = os.environ.get("DEBUG", "False").lower() in ("true", "1")
+#ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')#ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ") if not DEBUG else []
 
 ##CAUNDO LO QUIERA INCIAR LOCALMENTE:
-#DEBUG = True  # Temporalmente para depurar
-#ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+DEBUG = True  # Temporalmente para depurar
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Database configuration
 #DATABASES = {e
